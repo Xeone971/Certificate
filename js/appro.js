@@ -33,10 +33,12 @@ function fonctionSiTrue() {
     // Code à exécuter si la vérification est True
     console.log("Tous les cookies sont valides !");
     // Autres actions...
+    document.insertAdjacentHTML("<p>Tous les cookies sont valides !</p>");
 }
 
 function fonctionSiFalse() {
     // Code à exécuter si la vérification est False
     console.log("Certains cookies ne sont pas valides !");
     // Autres actions...
+    document.body.insertAdjacentHTML( 'afterbegin', '<div id="myID">Vous navez pas remplis les critères pour avoir ce certificat</div>' );
 }
