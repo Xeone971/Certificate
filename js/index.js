@@ -140,7 +140,7 @@ function importJSONFromInputFile(inputFile) {
 function vuepdf(data) {
     return `
         <p>${data.nom}  ${data.prenom}</p>
-        <img src="./OF ATTENDANCE.png" alt="tqt">
+        <img src="./media/OF ATTENDANCE.png" alt="tqt">
         
     `
 }
