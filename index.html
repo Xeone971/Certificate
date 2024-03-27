@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./node_modules/es6-promise/dist/es6-promise.auto.min.js"></script>
+    <script src="./node_modules/jspdf/dist/jspdf.min.js"></script>
+    <script src="./node_modules/html2canvas/dist/html2canvas.min.js"></script>
+    <script src="./node_modules/html2pdf.js/dist/html2pdf.js"></script>
+    <script src="index.js" type="module"></script>
+    <link rel="stylesheet" href="index.css">
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+</head>
+<body>
+    
+
+    <div id="element-to-print">
+        <!-- <img src="./OF ATTENDANCE.png" alt="tqt"> -->
+    </div>
+
+    <div class="container">
+        <p>test</p>
+    </div>
+    
+    
+    <button id="bouton">Générer PDF</button>
+    <button id="bouton2">Changer de page</button>
+    <button id="bouton3">Cookie</button>
+    <button id="bouton4">export</button>
+    <button id="bouton5">import</button>
+    <button id="bouton6">view</button>
+    <input type="file" id="fileInput">
+    
+
+    <script>
+        var element = document.getElementById('element-to-print');
+        var bouton = document.getElementById("bouton");
+        var bouton2 = document.getElementById("bouton2");
+        var bouton3 = document.getElementById("bouton3");
+        
+
+        bouton.addEventListener("click", (event) => {
+            var opt = {
+                filename:     'myfile.pdf',
+                html2canvas:  { scale: 1, scrollY: 0 },
+                jsPDF:        { unit: 'cm', format: 'a4', orientation: 'landscape' }
+                };
+                html2pdf()
+                .from(element)
+                .set(opt)
+                .save();
+        });
+
+        bouton2.addEventListener("click", (e) =>{
+            window.location.href="page2.html"
+        });
+        var newCookie = "name=oeschger; SameSite=None; Secure";
+        bouton3.addEventListener("click", (ev) =>{
+            document.cookie = newCookie;
+        });
+        
+
+        
+    </script>
+
+</body>
+</html>

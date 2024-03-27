@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="showCookies()">Show cookies</button>
+
+<button onclick="clearOutputCookies()">Clear</button>
+
+<div>
+  <code id="cookies"></code>
+</div>
+
+
+    <script>
+        function showCookies() {
+  const output = document.getElementById("cookies");
+  output.textContent = `> ${document.cookie}`;
+}
+
+function clearOutputCookies() {
+  const output = document.getElementById("cookies");
+  output.textContent = "";
+}
+    </script>
+    <h2>cookies</h2>
+ <form id="userForm">
+    <label for="nom">Nom :</label>
+    <input type="text" id="nom" name="nom" required>
+
+    <label for="prenom">Prénom :</label>
+    <input type="text" id="prenom" name="prenom" required>
+
+    <label for="dateNaissance">Date de naissance :</label>
+    <input type="date" id="dateNaissance" name="dateNaissance" required>
+
+    <button type="button" onclick="sauvegarderDonnees()">Sauvegarder</button>
+</form>
+
+<script>
+    function sauvegarderDonnees() {
+        var nom = document.getElementById('nom').value;
+        var prenom = document.getElementById('prenom').value;
+        var dateNaissance = document.getElementById('dateNaissance').value;
+
+        // Enregistrez les données dans des cookies
+        document.cookie = 'nom=' + nom + '; path=/';
+        document.cookie = 'prenom=' + prenom + '; path=/';
+        document.cookie = 'dateNaissance=' + dateNaissance + '; path=/';
+
+        alert('Données sauvegardées avec succès!');
+    }
+
+    function sauvegarderDonneeslocal() {
+    var nom2 = document.getElementById('nom2').value;
+    var prenom2 = document.getElementById('prenom2').value;
+    var dateNaissance2 = document.getElementById('dateNaissance2').value;
+
+    // Enregistrez les données dans le stockage local
+    localStorage.setItem('nom', nom2);
+    localStorage.setItem('prenom', prenom2);
+    localStorage.setItem('dateNaissance', dateNaissance2);
+
+    alert('Données sauvegardées avec succès!');
+}
+</script>
+<h2>Localstorage</h2>
+<form id="userForm">
+    <label for="nom2">Nom :</label>
+    <input type="text" id="nom2" name="nom2" required>
+
+    <label for="prenom">Prénom :</label>
+    <input type="text" id="prenom2" name="prenom2" required>
+
+    <label for="dateNaissance">Date de naissance :</label>
+    <input type="date" id="dateNaissance2" name="dateNaissance2" required>
+
+    <button type="button" onclick="sauvegarderDonneeslocal()">Sauvegarder</button>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.oui{
+    width: 1122.519685px;
+    height: 793.7007874px;
+}
+
+#element-to-print>p{
+    position: absolute;
+    top: 8.5cm;
+    left: 11.5cm;
+    font-size: xxx-large;
+    
+}
+
+#element-to-print>img{
+    width: 1122.519685px;
+    height: 793.7007874px;
+}
+
+#element-to-print{
+    /* //position: absolute; */
+}
