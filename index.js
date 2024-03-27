@@ -171,3 +171,6 @@ bouton6.addEventListener('click', function() {
     element.classList.toggle("oui");
     controlevuepdf();
 });
+
+
+
