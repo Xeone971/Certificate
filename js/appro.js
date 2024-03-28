@@ -1,3 +1,5 @@
+import * as data from './tab.js';
+
 var appro = document.getElementById("appro");
 
 appro.addEventListener('click', function() {
@@ -42,3 +44,7 @@ function fonctionSiFalse() {
     // Autres actions...
     document.body.insertAdjacentHTML( 'afterbegin', '<div id="myID">Vous navez pas remplis les critères pour avoir ce certificat</div>' );
 }
+
+console.log(data.pathTrad);
+console.log(data.path1);
+console.log(data.path1Trad);

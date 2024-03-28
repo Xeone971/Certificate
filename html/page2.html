@@ -4,29 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="../js/page2.js"></script>
     <title>Document</title>
 </head>
 <body>
-    <button onclick="showCookies()">Show cookies</button>
+    <button id="showCookies">Show cookies</button>
 
-<button onclick="clearOutputCookies()">Clear</button>
+<button id="clearOutputCookies">Clear</button>
 
 <div>
     <code id="cookies"></code>
 </div>
 
-
-    <script>
-        function showCookies() {
-  const output = document.getElementById("cookies");
-  output.textContent = `> ${document.cookie}`;
-}
-
-function clearOutputCookies() {
-  const output = document.getElementById("cookies");
-  output.textContent = "";
-}
-    </script>
     <h2>cookies</h2>
 <form id="userForm">
     <label for="nom">Nom :</label>
@@ -37,37 +26,15 @@ function clearOutputCookies() {
 
     <label for="dateNaissance">Date de naissance :</label>
     <input type="date" id="dateNaissance" name="dateNaissance" required>
+    <label for="pet-select">Choose a pet:</label>
 
-    <button type="button" onclick="sauvegarderDonnees()">Sauvegarder</button>
+    <select name="pets" id="pathway-selected">
+        <option value="">--Please choose a pathway--</option>
+</select>
+
+    <button type="button" id="sauvegarderDonnees">Sauvegarder</button>
 </form>
 
-<script>
-    function sauvegarderDonnees() {
-        var nom = document.getElementById('nom').value;
-        var prenom = document.getElementById('prenom').value;
-        var dateNaissance = document.getElementById('dateNaissance').value;
-
-        // Enregistrez les données dans des cookies
-        document.cookie = 'nom=' + nom + '; path=/';
-        document.cookie = 'prenom=' + prenom + '; path=/';
-        document.cookie = 'dateNaissance=' + dateNaissance + '; path=/';
-
-        alert('Données sauvegardées avec succès!');
-    }
-
-    function sauvegarderDonneeslocal() {
-    var nom2 = document.getElementById('nom2').value;
-    var prenom2 = document.getElementById('prenom2').value;
-    var dateNaissance2 = document.getElementById('dateNaissance2').value;
-
-    // Enregistrez les données dans le stockage local
-    localStorage.setItem('nom', nom2);
-    localStorage.setItem('prenom', prenom2);
-    localStorage.setItem('dateNaissance', dateNaissance2);
-
-    alert('Données sauvegardées avec succès!');
-}
-</script>
 <h2>Localstorage</h2>
 <form id="userForm">
     <label for="nom2">Nom :</label>
@@ -79,7 +46,7 @@ function clearOutputCookies() {
     <label for="dateNaissance">Date de naissance :</label>
     <input type="date" id="dateNaissance2" name="dateNaissance2" required>
 
-    <button type="button" onclick="sauvegarderDonneeslocal()">Sauvegarder</button>
+    <button type="button" id="sauvegarderDonneeslocal">Sauvegarder</button>
 </form>
 
 </body>

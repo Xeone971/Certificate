@@ -127,3 +127,21 @@ let path7Trad = {
     FPG: ['Food Packaging and Environment'],
     FPH: ['Food Packaging Regulation and Safety Issues']
 };
+
+export {
+    pathTrad,
+    path1,
+    path1Trad,
+    path2,
+    path2Trad,
+    path3,
+    path3Trad,
+    path4,
+    path4Trad,
+    path5,
+    path5Trad,
+    path6,
+    path6Trad,
+    path7,
+    path7Trad
+};
