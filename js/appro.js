@@ -1,5 +1,6 @@
 import * as data from './tab.js';
 
+
 var appro = document.getElementById("appro");
 
 appro.addEventListener('click', function() {
@@ -45,6 +46,20 @@ function fonctionSiTrue() {
     console.log("Tous les cookies sont valides !");
     // Autres actions...
     document.body.insertAdjacentHTML( 'afterbegin', '<div id="myID1"><p>Tous les cookies sont valides !</p></div>' );
+    controlevuepdf();
+    var element = document.getElementById('element-to-print');
+    var bouton = document.getElementById("bouton");
+    bouton.addEventListener("click", (event) => {
+    var opt = {
+        filename:     'myfile.pdf',
+        html2canvas:  { scale: 1, scrollY: 0 },
+        jsPDF:        { unit: 'cm', format: 'a4', orientation: 'landscape' }
+        };
+        html2pdf()
+        .from(element)
+        .set(opt)
+        .save();
+});
 }
 
 function fonctionSiFalse() {
@@ -108,3 +123,42 @@ give.addEventListener("click", (e) => {
 
 
 // console.log(newdata);
+
+
+function vuepdf(data) {
+    return `
+    <div id="element-to-print" class="oui">
+        <p>${data.nom}  ${data.prenom}</p>
+        <img src="../media/OF ATTENDANCE.png" alt="tqt">
+    </div>
+    <button id="bouton">Générer PDF</button>
+    `
+}
+
+function controlevuepdf(){
+    var cookies = document.cookie.split("; ");
+
+    // Tableau JSON pour stocker les données des cookies
+    var cookieData = {};
+
+    // Parcourir tous les cookies
+    cookies.forEach(function(cookie) {
+      // Diviser le cookie en nom et valeur
+    var parts = cookie.split("=");
+    var cookieName = parts[0];
+    var cookieValue = parts[1];
+
+      // Mettre à jour le tableau JSON avec les données du cookie
+    cookieData[cookieName] = cookieValue;
+});
+    
+    const tqt = vuepdf(cookieData);
+    document.body.insertAdjacentHTML("afterbegin", tqt);
+}
+
+// var bouton6 = document.getElementById("bouton6");
+// bouton6.addEventListener('click', function() {
+//     element.classList.toggle("oui");
+//     controlevuepdf();
+// });
+
