@@ -13,12 +13,12 @@ showCookie.addEventListener('click', showCookies);
 function showCookies() {
     const output = document.getElementById("cookies");
     output.textContent = `> ${document.cookie}`;
-  }
-  
-  function clearOutputCookies() {
+    }
+
+    function clearOutputCookies() {
     const output = document.getElementById("cookies");
     output.textContent = "";
-  }
+    }
 
 
 
@@ -41,17 +41,17 @@ function sauvegarderDonnees() {
 }
 
 function sauvegarderDonneeslocal() {
-var nom2 = document.getElementById('nom2').value;
-var prenom2 = document.getElementById('prenom2').value;
-var dateNaissance2 = document.getElementById('dateNaissance2').value;
+    var nom2 = document.getElementById('nom2').value;
+    var prenom2 = document.getElementById('prenom2').value;
+    var dateNaissance2 = document.getElementById('dateNaissance2').value;
 
-// Enregistrez les données dans le stockage local
-localStorage.setItem('nom', nom2);
-localStorage.setItem('prenom', prenom2);
-localStorage.setItem('dateNaissance', dateNaissance2);
+    // Enregistrez les données dans le stockage local
+    localStorage.setItem('nom', nom2);
+    localStorage.setItem('prenom', prenom2);
+    localStorage.setItem('dateNaissance', dateNaissance2);
 
-alert('Données sauvegardées avec succès!');
-}
+    alert('Données sauvegardées avec succès!');
+    }
 
 
 
@@ -83,3 +83,11 @@ function findKeyByValue(valueToFind) {
     }
     return null; // Retourne null si la valeur n'est pas trouvée
 }
+
+
+var boutonapprobationpage = document.getElementById("approbationpage");
+
+boutonapprobationpage.addEventListener("click", (e) =>{
+    window.location.href="/html/approbation.html"
+});
+

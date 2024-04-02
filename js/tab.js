@@ -11,7 +11,7 @@ let pathTrad = {
 let path1 = {
     FPA: ['FP-A-1'],
     FPB: ['FP-B-1', 'FP-B-2', 'FP-B-3', 'FP-B-4', 'FP-B-5', 'FP-B-6', 'FP-B-7'],
-    FPC: ['FP-C-1 ', 'FP-C-2', 'FP-C-3', 'FP-C-4', 'FP-C-5', 'FP-C-10'],
+    FPC: ['FP-C-1', 'FP-C-2', 'FP-C-3', 'FP-C-4', 'FP-C-5', 'FP-C-10'],
     FPD: ['FP-D-1', 'FP-D-2', 'FP-D-3', 'FP-D-4', 'FP-D-5', 'FP-D-6', 'FP-D-7', 'FP-D-8', 'FP-D-9'],
     FPE: ['FP-E-1', 'FP-E-2', 'FP-E-3', 'FP-E-4', 'FP-E-5', 'FP-E-6', 'FP-E-7', 'FP-E-8', 'FP-E-9', 'FP-E-10', 'FP-E-11'],
     FPF: ['FP-F-1', 'FP-F-2', 'FP-F-3', 'FP-F-4', 'FP-F-5', 'FP-F-6'],

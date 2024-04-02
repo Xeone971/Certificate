@@ -44,14 +44,14 @@ function fonctionSiTrue() {
     // Code à exécuter si la vérification est True
     console.log("Tous les cookies sont valides !");
     // Autres actions...
-    document.insertAdjacentHTML("<p>Tous les cookies sont valides !</p>");
+    document.body.insertAdjacentHTML( 'afterbegin', '<div id="myID1"><p>Tous les cookies sont valides !</p></div>' );
 }
 
 function fonctionSiFalse() {
     // Code à exécuter si la vérification est False
     console.log("Certains cookies ne sont pas valides !");
     // Autres actions...
-    document.body.insertAdjacentHTML( 'afterbegin', '<div id="myID">Vous navez pas remplis les critères pour avoir ce certificat</div>' );
+    document.body.insertAdjacentHTML( 'afterbegin', '<div id="myID2">Vous navez pas remplis les critères pour avoir ce certificat</div>' );
 }
 
 console.log(data.pathTrad);
@@ -83,4 +83,28 @@ function getCookie(name) {
 
 // Exemple d'utilisation :
 let nomCookie = getCookie('pathway');
-console.log(nomCookie); // Affichera la valeur du cookie 'nom' ou null si le cookie n'existe pas
+console.log(nomCookie); // Affichera la valeur du cookie 'pathway' ou null si le cookie n'existe pas
+console.log(data[nomCookie])
+
+var give = document.getElementById("creaCookieQcm");
+
+give.addEventListener("click", (e) => {
+    // if (nomCookie && data[nomCookie]) {
+    const valuesArray = data[nomCookie];
+    let newdata = [];
+    for (let key in data[nomCookie]) {
+        const length = valuesArray[key].length; // Accéder à la longueur du tableau à la clé spécifique
+        console.log(length); // Afficher la longueur du tableau
+        for (let i = 0; i < length; i ++){
+        newdata.push(data[nomCookie][key][i]);
+        }
+    }
+    console.log(newdata)  
+    for (let value of newdata) {
+        // Créer un cookie avec la valeur '6' pour chaque valeur du tableau
+        document.cookie = `${value}=6; path=/`;
+    }
+    });
+
+
+// console.log(newdata);
