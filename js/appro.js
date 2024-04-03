@@ -45,7 +45,7 @@ function fonctionSiTrue() {
     // Code à exécuter si la vérification est True
     console.log("Tous les cookies sont valides !");
     // Autres actions...
-    document.body.insertAdjacentHTML( 'afterbegin', '<div id="myID1"><p>Tous les cookies sont valides !</p></div>' );
+    document.body.insertAdjacentHTML( 'afterbegin', '<div id="myID1"><p>Here\'s your certificate!</p></div>' );
     controlevuepdf();
     var element = document.getElementById('element-to-print');
     var bouton = document.getElementById("bouton");
@@ -66,7 +66,7 @@ function fonctionSiFalse() {
     // Code à exécuter si la vérification est False
     console.log("Certains cookies ne sont pas valides !");
     // Autres actions...
-    document.body.insertAdjacentHTML( 'afterbegin', '<div id="myID2">Vous navez pas remplis les critères pour avoir ce certificat</div>' );
+    document.body.insertAdjacentHTML( 'afterbegin', '<div id="myID2">You do not meet the criteria for this certificate</div>' );
 }
 
 console.log(data.pathTrad);
@@ -117,7 +117,7 @@ give.addEventListener("click", (e) => {
     console.log(newdata)  
     for (let value of newdata) {
         // Créer un cookie avec la valeur '6' pour chaque valeur du tableau
-        document.cookie = `${value}=6; path=/`;
+        document.cookie = `${value}=8; path=/`;
     }
     });
 

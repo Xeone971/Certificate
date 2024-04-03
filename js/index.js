@@ -109,10 +109,10 @@ function importJSONToCookies(jsonData) {
   bouton4.addEventListener("click", (ok) =>{
     exportCookiesToJSON();
 });
-var newCookie = "name=oeschger; SameSite=None; Secure";
-bouton5.addEventListener("click", (pasok) =>{
-    importJSONToCookies(jsonData);
-});
+// var newCookie = "name=oeschger; SameSite=None; Secure";
+// bouton5.addEventListener("click", (pasok) =>{
+//     importJSONToCookies(jsonData);
+// });
 
 function importJSONFromInputFile(inputFile) {
     var file = inputFile.files[0];
