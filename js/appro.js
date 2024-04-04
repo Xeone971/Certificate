@@ -1,4 +1,6 @@
 import * as data from './tab.js';
+import { encryptData, decryptData } from './encrypt.js';
+
 
 
 var appro = document.getElementById("appro");
@@ -28,7 +30,7 @@ function verifierCookies(nomsCookiesReference) {
     // Extraire les cookies de document.cookie
     const cookies = document.cookie.split(';').reduce((cookiesObj, cookie) => {
         const [name, value] = cookie.trim().split('=');
-        cookiesObj[name] = parseInt(value, 10);
+        cookiesObj[name] = decryptData(value);
         return cookiesObj;
     }, {});
 
@@ -88,7 +90,8 @@ function getCookie(name) {
         // Vérifier si le nom du cookie correspond à celui recherché
         if (cookieName === name) {
             // Retourner la valeur du cookie
-            return decodeURIComponent(cookieValue);
+            const decryptedValue = decryptData(decodeURIComponent(cookieValue));
+            return decryptedValue;
         }
     }
 
@@ -106,6 +109,7 @@ var give = document.getElementById("creaCookieQcm");
 give.addEventListener("click", (e) => {
     // if (nomCookie && data[nomCookie]) {
     const valuesArray = data[nomCookie];
+    const encryptedValue = encryptData('8');
     let newdata = [];
     for (let key in data[nomCookie]) {
         const length = valuesArray[key].length; // Accéder à la longueur du tableau à la clé spécifique
@@ -117,13 +121,25 @@ give.addEventListener("click", (e) => {
     console.log(newdata)  
     for (let value of newdata) {
         // Créer un cookie avec la valeur '6' pour chaque valeur du tableau
-        document.cookie = `${value}=8; path=/`;
+        document.cookie = `${value}=${encryptedValue}; path=/`;
     }
     });
-
-
-// console.log(newdata);
-
+    
+    // give.addEventListener("click", (e) => {
+    //     const valuesArray = data[nomCookie];
+    //     let newdata = [];
+    //     for (let key in data[nomCookie]) {
+    //         const length = valuesArray[key].length;
+    //         for (let i = 0; i < length; i ++) {
+    //             // Crypter la valeur '8' avant de créer le cookie
+    //             const encryptedValue = encryptData('8');
+    //             newdata.push(encryptedValue);
+    //         }
+    //     }
+    //     newdata.forEach((value, index) => {
+    //         document.cookie = `${index}=${value}; path=/`;
+    //     });
+    // });
 
 function vuepdf(data) {
     return `
@@ -149,16 +165,9 @@ function controlevuepdf(){
     var cookieValue = parts[1];
 
       // Mettre à jour le tableau JSON avec les données du cookie
-    cookieData[cookieName] = cookieValue;
+    cookieData[cookieName] = decryptData(cookieValue);
 });
     
     const tqt = vuepdf(cookieData);
     document.body.insertAdjacentHTML("afterbegin", tqt);
 }
-
-// var bouton6 = document.getElementById("bouton6");
-// bouton6.addEventListener('click', function() {
-//     element.classList.toggle("oui");
-//     controlevuepdf();
-// });
-
