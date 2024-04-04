@@ -1,12 +1,12 @@
 import * as data from './tab.js';
 
-var donneLocal = document.getElementById("sauvegarderDonneeslocal");
+//var donneLocal = document.getElementById("sauvegarderDonneeslocal");
 var donne = document.getElementById("sauvegarderDonnees");
 var clearCookie = document.getElementById("clearOutputCookies");
 var showCookie = document.getElementById("showCookies");
 
 // donneLocal.addEventListener('click', sauvegarderDonneeslocal);
-// donne.addEventListener('click', sauvegarderDonnees);
+donne.addEventListener('click', sauvegarderDonnees);
 clearCookie.addEventListener('click', clearOutputCookies);
 showCookie.addEventListener('click', showCookies);
 
