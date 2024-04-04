@@ -5,8 +5,8 @@ var donne = document.getElementById("sauvegarderDonnees");
 var clearCookie = document.getElementById("clearOutputCookies");
 var showCookie = document.getElementById("showCookies");
 
-donneLocal.addEventListener('click', sauvegarderDonneeslocal);
-donne.addEventListener('click', sauvegarderDonnees);
+// donneLocal.addEventListener('click', sauvegarderDonneeslocal);
+// donne.addEventListener('click', sauvegarderDonnees);
 clearCookie.addEventListener('click', clearOutputCookies);
 showCookie.addEventListener('click', showCookies);
 
