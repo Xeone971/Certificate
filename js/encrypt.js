@@ -8,4 +8,3 @@ export function decryptData(ciphertext) {
     const bytes = CryptoJS.AES.decrypt(ciphertext, secretKey);
     return JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
 }
-

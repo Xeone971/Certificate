@@ -1,26 +1,29 @@
 import * as data from './tab.js';
-import { encryptData, decryptData } from './encrypt.js';
+import {
+    encryptData,
+    decryptData
+} from './encrypt.js';
 
 
 
 var appro = document.getElementById("appro");
 
-appro.addEventListener('click', function() {
+appro.addEventListener('click', function () {
     // Récupérer la valeur du cookie 'pathway'
     const pathwayValue = getCookie('pathway');
 
-// Vérifier si le cookie 'pathway' existe et correspond à une clé dans l'objet data
+    // Vérifier si le cookie 'pathway' existe et correspond à une clé dans l'objet data
     if (pathwayValue && data[pathwayValue]) {
         const nomsCookiesReference = Object.values(data[pathwayValue]).flat();
         // Utilisez nomsCookiesReference comme vous le souhaitez
         console.log(nomsCookiesReference);
-    if (verifierCookies(nomsCookiesReference)) {
-        // Si la vérification est réussie (True)
-        fonctionSiTrue();
-    } else {
-        // Si la vérification échoue (False)
-        fonctionSiFalse();
-    }
+        if (verifierCookies(nomsCookiesReference)) {
+            // Si la vérification est réussie (True)
+            fonctionSiTrue();
+        } else {
+            // Si la vérification échoue (False)
+            fonctionSiFalse();
+        }
     } else {
         console.error("Le chemin (path) spécifié dans le cookie 'pathway' n'est pas valide ou n'existe pas dans l'objet data.");
     }
@@ -47,28 +50,44 @@ function fonctionSiTrue() {
     // Code à exécuter si la vérification est True
     console.log("Tous les cookies sont valides !");
     // Autres actions...
-    document.body.insertAdjacentHTML( 'afterbegin', '<div id="myID1"><p>Here\'s your certificate!</p></div>' );
+    document.body.insertAdjacentHTML('afterbegin', '<div id="myID1"><p>Here\'s your certificate!</p></div>');
     controlevuepdf();
     var element = document.getElementById('element-to-print');
     var bouton = document.getElementById("bouton");
     bouton.addEventListener("click", (event) => {
-    var opt = {
-        filename:     'myfile.pdf',
-        html2canvas:  { scale: 1, scrollY: 0 },
-        jsPDF:        { unit: 'cm', format: 'a4', orientation: 'landscape' }
+        var opt = {
+            filename: 'myfile.pdf',
+            html2canvas: {
+                scale: 1,
+                scrollY: 0
+            },
+            jsPDF: {
+                unit: 'cm',
+                format: 'a4',
+                orientation: 'landscape'
+            }
         };
         html2pdf()
-        .from(element)
-        .set(opt)
-        .save();
-});
+            .from(element)
+            .set(opt)
+            // .save();
+            .toPdf() // Convertir le contenu en PDF
+            .get('pdf') // Obtenir l'objet jsPDF
+            .then(function (pdf) {
+                // Positionner et ajouter un lien cliquable
+                // Les coordonnées x et y définissent la position de départ du texte
+                //pdf.textWithLink('Cliquez ici pour visiter Google', 5, 5, { url: 'https://www.google.com' });
+                // Sauvegarder le document
+                pdf.save('myfile.pdf');
+            });
+    });
 }
 
 function fonctionSiFalse() {
     // Code à exécuter si la vérification est False
     console.log("Certains cookies ne sont pas valides !");
     // Autres actions...
-    document.body.insertAdjacentHTML( 'afterbegin', '<div id="myID2">You do not meet the criteria for this certificate</div>' );
+    document.body.insertAdjacentHTML('afterbegin', '<div id="myID2">You do not meet the criteria for this certificate</div>');
 }
 
 console.log(data.pathTrad);
@@ -114,32 +133,32 @@ give.addEventListener("click", (e) => {
     for (let key in data[nomCookie]) {
         const length = valuesArray[key].length; // Accéder à la longueur du tableau à la clé spécifique
         console.log(length); // Afficher la longueur du tableau
-        for (let i = 0; i < length; i ++){
-        newdata.push(data[nomCookie][key][i]);
+        for (let i = 0; i < length; i++) {
+            newdata.push(data[nomCookie][key][i]);
         }
     }
-    console.log(newdata)  
+    console.log(newdata)
     for (let value of newdata) {
         // Créer un cookie avec la valeur '6' pour chaque valeur du tableau
         document.cookie = `${value}=${encryptedValue}; path=/`;
     }
-    });
-    
-    // give.addEventListener("click", (e) => {
-    //     const valuesArray = data[nomCookie];
-    //     let newdata = [];
-    //     for (let key in data[nomCookie]) {
-    //         const length = valuesArray[key].length;
-    //         for (let i = 0; i < length; i ++) {
-    //             // Crypter la valeur '8' avant de créer le cookie
-    //             const encryptedValue = encryptData('8');
-    //             newdata.push(encryptedValue);
-    //         }
-    //     }
-    //     newdata.forEach((value, index) => {
-    //         document.cookie = `${index}=${value}; path=/`;
-    //     });
-    // });
+});
+
+// give.addEventListener("click", (e) => {
+//     const valuesArray = data[nomCookie];
+//     let newdata = [];
+//     for (let key in data[nomCookie]) {
+//         const length = valuesArray[key].length;
+//         for (let i = 0; i < length; i ++) {
+//             // Crypter la valeur '8' avant de créer le cookie
+//             const encryptedValue = encryptData('8');
+//             newdata.push(encryptedValue);
+//         }
+//     }
+//     newdata.forEach((value, index) => {
+//         document.cookie = `${index}=${value}; path=/`;
+//     });
+// });
 
 function vuepdf(data) {
     return `
@@ -151,23 +170,23 @@ function vuepdf(data) {
     `
 }
 
-function controlevuepdf(){
+function controlevuepdf() {
     var cookies = document.cookie.split("; ");
 
     // Tableau JSON pour stocker les données des cookies
     var cookieData = {};
 
     // Parcourir tous les cookies
-    cookies.forEach(function(cookie) {
-      // Diviser le cookie en nom et valeur
-    var parts = cookie.split("=");
-    var cookieName = parts[0];
-    var cookieValue = parts[1];
+    cookies.forEach(function (cookie) {
+        // Diviser le cookie en nom et valeur
+        var parts = cookie.split("=");
+        var cookieName = parts[0];
+        var cookieValue = parts[1];
 
-      // Mettre à jour le tableau JSON avec les données du cookie
-    cookieData[cookieName] = decryptData(cookieValue);
-});
-    
+        // Mettre à jour le tableau JSON avec les données du cookie
+        cookieData[cookieName] = decryptData(cookieValue);
+    });
+
     const tqt = vuepdf(cookieData);
     document.body.insertAdjacentHTML("afterbegin", tqt);
 }

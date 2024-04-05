@@ -1,5 +1,8 @@
 import * as data from './tab.js';
-import { encryptData, decryptData } from './encrypt.js';
+import {
+    encryptData,
+    decryptData
+} from './encrypt.js';
 
 
 
@@ -18,40 +21,43 @@ showCookie.addEventListener('click', showCookies);
 //     output.textContent = `> ${document.cookie}`;
 //     }
 
-    function clearOutputCookies() {
+function clearOutputCookies() {
     const output = document.getElementById("cookies");
     output.textContent = "";
-    }
+}
 
-    function sauvegarderDonnees() {
-        var nom = encryptData(document.getElementById('nom').value);
-        var prenom = encryptData(document.getElementById('prenom').value);
-        var dateNaissance = encryptData(document.getElementById('dateNaissance').value);
-        var pathwaySelect = document.getElementById("pathway-selected");
-        var selectedPathway = pathwaySelect.options[pathwaySelect.selectedIndex].value;
-    
-        // Enregistrez les données cryptées dans des cookies
-        document.cookie = 'nom=' + nom + '; path=/';
-        document.cookie = 'prenom=' + prenom + '; path=/';
-        document.cookie = 'dateNaissance=' + dateNaissance + '; path=/';
-        document.cookie = 'pathway=' + encryptData(findKeyByValue(selectedPathway)) + '; path=/';
-    
-        alert('Données sauvegardées avec succès!');
-    }
-    
-    function showCookies() {
-        const output = document.getElementById("cookies");
-        const cookies = document.cookie.split(';').map(cookie => cookie.split('=')).reduce((acc, [key, value]) => ({ ...acc, [key.trim()]: value }), {});
-        
-        const decryptedCookies = {
-            nom: decryptData(cookies['nom']),
-            prenom: decryptData(cookies['prenom']),
-            dateNaissance: decryptData(cookies['dateNaissance']),
-            pathway: decryptData(cookies['pathway'])
-        };
-    
-        output.textContent = `> ${JSON.stringify(decryptedCookies)}`;
-    }
+function sauvegarderDonnees() {
+    var nom = encryptData(document.getElementById('nom').value);
+    var prenom = encryptData(document.getElementById('prenom').value);
+    var dateNaissance = encryptData(document.getElementById('dateNaissance').value);
+    var pathwaySelect = document.getElementById("pathway-selected");
+    var selectedPathway = pathwaySelect.options[pathwaySelect.selectedIndex].value;
+
+    // Enregistrez les données cryptées dans des cookies
+    document.cookie = 'nom=' + nom + '; path=/';
+    document.cookie = 'prenom=' + prenom + '; path=/';
+    document.cookie = 'dateNaissance=' + dateNaissance + '; path=/';
+    document.cookie = 'pathway=' + encryptData(findKeyByValue(selectedPathway)) + '; path=/';
+
+    alert('Données sauvegardées avec succès!');
+}
+
+function showCookies() {
+    const output = document.getElementById("cookies");
+    const cookies = document.cookie.split(';').map(cookie => cookie.split('=')).reduce((acc, [key, value]) => ({
+        ...acc,
+        [key.trim()]: value
+    }), {});
+
+    const decryptedCookies = {
+        nom: decryptData(cookies['nom']),
+        prenom: decryptData(cookies['prenom']),
+        dateNaissance: decryptData(cookies['dateNaissance']),
+        pathway: decryptData(cookies['pathway'])
+    };
+
+    output.textContent = `> ${JSON.stringify(decryptedCookies)}`;
+}
 
 
 
@@ -62,7 +68,7 @@ showCookie.addEventListener('click', showCookies);
 //     var dateNaissance = document.getElementById('dateNaissance').value;
 //     var pathwaySelect = document.getElementById("pathway-selected");
 //     var selectedPathway = pathwaySelect.options[pathwaySelect.selectedIndex].value;
-    
+
 //     // Enregistrez les données dans des cookies
 //     document.cookie = 'nom=' + nom + '; path=/';
 //     document.cookie = 'prenom=' + prenom + '; path=/';
@@ -95,15 +101,15 @@ for (let key in data.pathTrad) {
     console.log(key); // Affiche la clé (par exemple, 'path1', 'path2', etc.)
     console.log(data.pathTrad[key]); // Affiche le tableau associé à la clé
     newdata.push(data.pathTrad[key][0]);
-    
+
 }
 console.log(newdata);
 newdata.forEach((pathway) => {
-            const option = document.createElement("option");
-            option.value = pathway.toLowerCase();
-            option.text = pathway;
-            pathways.appendChild(option); // Ajoutez l'option à petSelect, pas à pathway
-        });
+    const option = document.createElement("option");
+    option.value = pathway.toLowerCase();
+    option.text = pathway;
+    pathways.appendChild(option); // Ajoutez l'option à petSelect, pas à pathway
+});
 
 
 function findKeyByValue(valueToFind) {
@@ -119,7 +125,6 @@ function findKeyByValue(valueToFind) {
 
 var boutonapprobationpage = document.getElementById("approbationpage");
 
-boutonapprobationpage.addEventListener("click", (e) =>{
-    window.location.href="/html/approbation.html"
+boutonapprobationpage.addEventListener("click", (e) => {
+    window.location.href = "/html/approbation.html"
 });
-
