@@ -76,7 +76,7 @@ function fonctionSiTrue() {
             .then(function (pdf) {
                 // Positionner et ajouter un lien cliquable
                 // Les coordonnées x et y définissent la position de départ du texte
-                //pdf.textWithLink('Cliquez ici pour visiter Google', 5, 5, { url: 'https://www.google.com' });
+                // pdf.textWithLink('Cliquez ici pour visiter Google', 5, 5, { url: 'https://www.google.com' });
                 // Sauvegarder le document
                 pdf.save('myfile.pdf');
             });
