@@ -12,16 +12,22 @@ The final objective is to have a practical system to use, import, export your da
 1. Use of data:
    1. ***Import data***
 
+   2. ***Export data***
+
+   3. ***Control your data***
+
 2. Safety and security:
 
-   1. Go to <a href="https://github.com/scours/fitness2/tree/wip" target="_blank">this page</a> and <a href="https://docs.github.com/en/get-started/quickstart/fork-a-repo" target="_blank">fork</a> the "wip" folder (or branch) of the project
+   1. ***Data encryption***
 
 3. Certificate generation:
 
-   1. Once the project is forked, you have a copy of the project. You can make the changes you want. To modify the lectures displayed, you will have to modify the manifests/root.manifest file. All the changes you want to make must be inside the "children" property. The root file is configured as follows: You have the "children" property, then, inside that property, you have the path for each lecture to be displayed. For example `Properties of food packaging materials/Thermal, mechanical and barrier properties/thermal-properties-methods-and-standards` will display the thermal properties methods and standards lectures details. Those details can be found in the "thermal-properties-methods-and-standards" file which is inside the "**Thermal, mechanical and barrier properties**" folder which is inside the "**Properties of food packaging materials**" folder. The root file allows us to define what we want to display on the left side of the interface. The root file is in <a href="https://en.wikipedia.org/wiki/JSON" target="_blank">json</a>, so the content added to this file must follow the json format. Essentially, for this file, it comes down to respecting braces, quotation marks, commas and square brackets. A visual interface to modify the root file can be created if needed. <a href="https://www.w3schools.com/js/js_json_intro.asp" target="_blank">Here</a> you can find more information on the json format.
+   1. ***Generation***
 
-4. Contribute with your modifications:
-   1. Once you have made your modifications, you can contribute and propose your modifications by creating a <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request" target="_blank">pull request</a>. The pull request is needed to see your modifications on the interface provided, as the interface is working with this <a href="https://github.com/scours/fitness2/blob/wip/manifests/root.manifest" target="_blank">root.manifest</a> file. Once your modifications will be accepted, your modifications will be merged with this <a href="https://github.com/scours/fitness2/blob/wip/manifests/root.manifest" target="_blank">root.manifest</a> file and the interface will be able to reflect and display your modifications.
+   2. ***Preview***
+
+   3. ***Save***
+
 
 ## How to use this test interface ?
 
