@@ -166,7 +166,7 @@ function vuepdf(data) {
         <p>${data.nom}  ${data.prenom}</p>
         <img src="../media/OF ATTENDANCE.png" alt="tqt">
     </div>
-    <button id="bouton">Générer PDF</button>
+    <button id="bouton">Download PDF</button>
     `
 }
 
