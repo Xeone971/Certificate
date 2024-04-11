@@ -10,28 +10,28 @@ https://fitness.agroparistech.fr
 The final objective is to have a practical system to use, import, export your data on the target to be used in the certification way.
 
 1. Use of data:
-   1. ***Import data***
+   1. ***Import data***is a function that lets you simply manage your data.
 
-   2. ***Export data***
+   2. ***Export data***is a function that lets you simply manage your data.
 
-   3. ***Control your data***
+   3. ***Control your data***is a function that lets you simply switch devices and use your data without a connection.
 
 2. Safety and security:
 
-   1. ***Data encryption***
+   1. ***Data encryption***to ensure data security and reliability.
 
 3. Certificate generation:
 
-   1. ***Generation***
+   1. ***Generation**of personalised certificate with your data.
 
-   2. ***Preview***
+   2. ***Preview***of personalised certificate with your data.
 
-   3. ***Save***
+   3. ***Save***on your device your pdf certificate.
 
 
 ## How to use this test interface ?
 
-**To add a lecture**
+**To use your data**
 
 1. Add lectures information and save them
    1. Once you are on the interface, as shown in the ["Download the interface"](#download-the-interface) section, you will see the "Manifest editor" link at the bottom of the page. Click on that link and fill the fields. Once you are satisfied, click on the "Save modifications" button at the bottom of the page, then a file containing all your changes will be downloaded, we call that file the manifest file.
@@ -42,7 +42,7 @@ The final objective is to have a practical system to use, import, export your da
 3. Contribute with your modifications
    1. You can contribute with your changes by following the "contribute with your modifications" steps in the ["How to modify displayed lectures on the interface?"](#how-to-modify-displayed-lectures-on-the-interface) section.
 
-**To modify a lecture**
+**To have your certificate**
 
 These are almost the same steps as for adding a lecture (above). What changes is step 1 which allows you to fill in the fields: when you want to modify a lecture, you click on "Manifest editor", then on "import a manifest" and then you modify the desired fields. For the rest, the procedure is the same.
 
