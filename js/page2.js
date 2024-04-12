@@ -126,5 +126,5 @@ function findKeyByValue(valueToFind) {
 var boutonapprobationpage = document.getElementById("approbationpage");
 
 boutonapprobationpage.addEventListener("click", (e) => {
-    window.location.href = "/html/approbation.html"
+    window.location.href = "approbation.html"
 });
