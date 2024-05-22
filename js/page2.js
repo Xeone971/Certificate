@@ -43,13 +43,14 @@ function sauvegarderDonnees() {
     var dateNaissance = encryptData(document.getElementById('dateNaissance').value);
     var pathwaySelect = document.getElementById("pathway-selected");
     var selectedPathway = pathwaySelect.options[pathwaySelect.selectedIndex].value;
-
+    var certificateSelect = document.getElementById("certificate-selected");
+    var selectedCertificate = certificateSelect.options[certificateSelect.selectedIndex].value;
     // Enregistrez les données cryptées dans des cookies
     document.cookie = 'nom=' + nom + '; path=/';
     document.cookie = 'prenom=' + prenom + '; path=/';
     document.cookie = 'dateNaissance=' + dateNaissance + '; path=/';
     document.cookie = 'pathway=' + encryptData(findKeyByValue(selectedPathway)) + '; path=/';
-
+    document.cookie = 'certificateSelect=' + selectedCertificate + '; path=/';
     alert('Données sauvegardées avec succès!');
 }
 

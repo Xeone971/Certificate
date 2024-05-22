@@ -33,34 +33,27 @@ Modified By: Lucca COLLAS
 <form id="userForm">
     <label for="nom">Last name :</label>
     <input type="text" id="nom" name="nom" required>
-
+    <br>
     <label for="prenom">First name :</label>
     <input type="text" id="prenom" name="prenom" required>
-
+    <br>
     <label for="dateNaissance">Date of birth :</label>
     <input type="date" id="dateNaissance" name="dateNaissance" required>
-    <label for="pet-select">Choose a pathway:</label>
-
-    <select name="pets" id="pathway-selected">
+    <br>
+    <label for="pathway">Choose a pathway:</label>
+    <select name="pathway" id="pathway-selected">
         <option value="">--Please choose a pathway--</option>
-</select>
+    </select>
+    <br>
+    <label for="certificate">Choose the certificate type:</label>
+    <select name="certificate" id="certificate-selected">
+        <option value="attendance">Certificate of attendance</option>
+        <option value="completion">Certificate of completion</option>
+    </select>
 
     <button type="button" id="sauvegarderDonnees">Save</button>
 </form>
 
-<!-- <h2>Localstorage</h2>
-<form id="userForm">
-    <label for="nom2">Nom :</label>
-    <input type="text" id="nom2" name="nom2" required>
-
-    <label for="prenom">Prénom :</label>
-    <input type="text" id="prenom2" name="prenom2" required>
-
-    <label for="dateNaissance">Date de naissance :</label>
-    <input type="date" id="dateNaissance2" name="dateNaissance2" required>
-
-    <button type="button" id="sauvegarderDonneeslocal">Sauvegarder</button>
-</form> -->
 <button id="approbationpage">certificate request page</button>
 
 
