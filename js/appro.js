@@ -5,7 +5,7 @@
  * File Created: Thursday, 11th April 2024
  * Authors: Steward OUADI (AgroParisTech),  Olivier VITRAC (INRAE), Lucca COLLAS
  * -----
- * Last Modified: Wednesday, 22nd May 2024
+ * Last Modified: Friday, 24th May 2024
  * Modified By: Lucca COLLAS
  */
 
@@ -14,6 +14,7 @@ import {
     encryptData,
     decryptData
 } from './encrypt.js';
+
 
 
 
@@ -57,9 +58,27 @@ function verifierCookies(nomsCookiesReference) {
     return true;
 }
 
+function getFormattedDate() {
+    const dateObj = new Date();
+    
+    const day = String(dateObj.getDate()).padStart(2, '0');
+    const month = String(dateObj.getMonth() + 1).padStart(2, '0'); // Les mois commencent à 0
+    const year = String(dateObj.getFullYear()).slice(-2); // Obtenir les deux derniers chiffres de l'année
+
+    return `${day}-${month}-${year}`;
+}
+
+
+
 function fonctionSiTrue() {
     // Code à exécuter si la vérification est True
     console.log("Tous les cookies sont valides !");
+    var firstname = getCookie("nom");
+    var lastname = getCookie("prenom");
+    var date = getFormattedDate();
+    var certificatetype = getCookie("certificateSelect");
+    var pathway = getCookie("pathway");
+    var pathwayname = data.pathTrad[pathway];
     // Autres actions...
     document.body.insertAdjacentHTML('afterbegin', '<div id="myID1"><p>Here\'s your certificate!</p></div>');
     controlevuepdf();
@@ -89,7 +108,7 @@ function fonctionSiTrue() {
                 // Les coordonnées x et y définissent la position de départ du texte
                 // pdf.textWithLink('Cliquez ici pour visiter Google', 5, 5, { url: 'https://www.google.com' });
                 // Sauvegarder le document
-                pdf.save('myfile.pdf');
+                pdf.save(`${firstname}_${lastname}_certificate-of-${certificatetype}_${pathwayname}_${date}`);
             });
     });
 }
@@ -155,21 +174,6 @@ give.addEventListener("click", (e) => {
     }
 });
 
-// give.addEventListener("click", (e) => {
-//     const valuesArray = data[nomCookie];
-//     let newdata = [];
-//     for (let key in data[nomCookie]) {
-//         const length = valuesArray[key].length;
-//         for (let i = 0; i < length; i ++) {
-//             // Crypter la valeur '8' avant de créer le cookie
-//             const encryptedValue = encryptData('8');
-//             newdata.push(encryptedValue);
-//         }
-//     }
-//     newdata.forEach((value, index) => {
-//         document.cookie = `${index}=${value}; path=/`;
-//     });
-// });
 
 function vuepdf(data) {
     return `

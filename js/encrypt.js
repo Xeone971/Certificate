@@ -5,7 +5,7 @@
  * File Created: Thursday, 11th April 2024
  * Authors: Steward OUADI (AgroParisTech),  Olivier VITRAC (INRAE), Lucca COLLAS
  * -----
- * Last Modified: Wednesday, 22nd May 2024
+ * Last Modified: Friday, 24th May 2024
  * Modified By: Lucca COLLAS
  */
 
@@ -16,6 +16,12 @@ export function encryptData(data) {
 }
 
 export function decryptData(ciphertext) {
-    const bytes = CryptoJS.AES.decrypt(ciphertext, secretKey);
-    return JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+    try {
+        const bytes = CryptoJS.AES.decrypt(ciphertext, secretKey);
+        const decryptedString = bytes.toString(CryptoJS.enc.Utf8);
+        return JSON.parse(decryptedString); // Assurez-vous que c'est une chaîne JSON valide avant de la parser
+    } catch (error) {
+        console.error('Error decrypting data:', error);
+        return null; // ou gérer l'erreur de manière appropriée
+    }
 }

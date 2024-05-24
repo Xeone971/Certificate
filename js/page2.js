@@ -5,7 +5,7 @@
  * File Created: Thursday, 11th April 2024
  * Authors: Steward OUADI (AgroParisTech),  Olivier VITRAC (INRAE), Lucca COLLAS
  * -----
- * Last Modified: Wednesday, 22nd May 2024
+ * Last Modified: Friday, 24th May 2024
  * Modified By: Lucca COLLAS
  */
 
@@ -44,7 +44,7 @@ function sauvegarderDonnees() {
     var pathwaySelect = document.getElementById("pathway-selected");
     var selectedPathway = pathwaySelect.options[pathwaySelect.selectedIndex].value;
     var certificateSelect = document.getElementById("certificate-selected");
-    var selectedCertificate = certificateSelect.options[certificateSelect.selectedIndex].value;
+    var selectedCertificate = encryptData(certificateSelect.options[certificateSelect.selectedIndex].value);
     // Enregistrez les données cryptées dans des cookies
     document.cookie = 'nom=' + nom + '; path=/';
     document.cookie = 'prenom=' + prenom + '; path=/';
@@ -70,38 +70,6 @@ function showCookies() {
 
     output.textContent = `> ${JSON.stringify(decryptedCookies)}`;
 }
-
-
-
-
-// function sauvegarderDonnees() {
-//     var nom = document.getElementById('nom').value;
-//     var prenom = document.getElementById('prenom').value;
-//     var dateNaissance = document.getElementById('dateNaissance').value;
-//     var pathwaySelect = document.getElementById("pathway-selected");
-//     var selectedPathway = pathwaySelect.options[pathwaySelect.selectedIndex].value;
-
-//     // Enregistrez les données dans des cookies
-//     document.cookie = 'nom=' + nom + '; path=/';
-//     document.cookie = 'prenom=' + prenom + '; path=/';
-//     document.cookie = 'dateNaissance=' + dateNaissance + '; path=/';
-//     document.cookie = 'pathway=' + findKeyByValue(selectedPathway) + '; path=/';
-
-//     alert('Données sauvegardées avec succès!');
-// }
-
-// function sauvegarderDonneeslocal() {
-//     var nom2 = document.getElementById('nom2').value;
-//     var prenom2 = document.getElementById('prenom2').value;
-//     var dateNaissance2 = document.getElementById('dateNaissance2').value;
-
-//     // Enregistrez les données dans le stockage local
-//     localStorage.setItem('nom', nom2);
-//     localStorage.setItem('prenom', prenom2);
-//     localStorage.setItem('dateNaissance', dateNaissance2);
-
-//     alert('Données sauvegardées avec succès!');
-//     }
 
 
 
