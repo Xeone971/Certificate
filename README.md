@@ -5,29 +5,6 @@ https://fitness.agroparistech.fr
 
 # Documentation
 
-## Development of the certification scheme
-
-The ultimate aim is to have a practical system for managing your data so that it can be used for certification purposes.
-
-1. Use of data:
-   1. ***Import data*** is a function that lets you simply manage your data.
-
-   2. ***Export data*** is a function that lets you simply manage your data.
-
-   3. ***Control your data*** is a function that lets you simply switch devices and use your data without a connection.
-
-2. Safety and security:
-
-   1. ***Data encryption*** to ensure data security and reliability.
-
-3. Certificate generation:
-
-   1. ***Generation*** of personalised certificate with your data.
-
-   2. ***Preview*** of personalised certificate with your data.
-
-   3. ***Save*** on your device your pdf certificate.
-
 
 ## How do I use this test interface?
 
