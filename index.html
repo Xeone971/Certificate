@@ -1,13 +1,30 @@
 <!--
-File: index.html
+File: page2.html
 Contract: EU contract 2022-FR01-KA220-HED-000023509
 Project: FitNESS 2 ERASMUS+
 File Created: Thursday, 11th April 2024
 Authors: Steward OUADI (AgroParisTech),  Olivier VITRAC (INRAE), Lucca COLLAS
 -----
-Last Modified: Wednesday, 22nd May 2024
+Last Modified: Tuesday, 4th June 2024
 Modified By: Lucca COLLAS
 -->
+
+
+<!-- ## Development of the certification scheme
+
+The ultimate aim is to have a practical system for managing your data so that it can be used for certification purposes.
+
+Use of data:
+   1. ***Import data*** is a function that lets you simply manage your data.
+
+   2. ***Export data*** is a function that lets you simply manage your data.
+
+   3. ***Control your data*** is a function that lets you simply switch devices and use your data without a connection.
+
+Safety and security:
+
+   1. ***Data encryption*** to ensure data security and reliability. -->
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,82 +32,55 @@ Modified By: Lucca COLLAS
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="js/page2.js"></script>
+    <!-- <script src="../node_modules/crypto-js/crypto-js.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/fitness.css">
+    <link rel="stylesheet" href="css/font-awesome-4-7-0.min.css">
     <title>Document</title>
-    <!-- <script src="./node_modules/es6-promise/dist/es6-promise.auto.min.js"></script>
-    <script src="./node_modules/jspdf/dist/jspdf.min.js"></script>
-    <script src="./node_modules/html2canvas/dist/html2canvas.min.js"></script>
-    <script src="./node_modules/html2pdf.js/dist/html2pdf.js"></script> -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/4.2.8/es6-promise.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.8.0/html2pdf.bundle.min.js"></script> -->
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-    <script src="js/index.js" type="module"></script>
-    <link rel="stylesheet" href="css/index.css">
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
 </head>
 <body>
-    
+    <main-header></main-header>
+    <button id="showCookies">Show Data</button>
 
-    <div id="element-to-print">
-        <!-- <img src="./OF ATTENDANCE.png" alt="tqt"> -->
-    </div>
+<button id="clearOutputCookies">Clear</button>
 
-    <div class="container">
-        <p>test</p>
-    </div>
-    
-    <button id="bouton">Save PDF</button>
-    <button id="bouton2">Switch page</button>
-    <button id="bouton3">Sample data</button>
-    <button id="bouton4">export</button>
-    <!-- <button id="bouton5">import</button> -->
-    <button id="bouton6">Generate view certificate</button>
-    <input type="file" id="fileInput">
-    
-<!--
-File: index.html
-Contract: EU contract 2022-FR01-KA220-HED-000023509
-Project: FitNESS 2 ERASMUS+
-File Created: Thursday, 11th April 2024
-Authors: Steward OUADI (AgroParisTech),  Olivier VITRAC (INRAE)
------
-Last Modified: Wednesday, 22nd May 2024
-Modified By: Steward OUADI
--->
+<div>
+    <code id="cookies"></code>
+</div>
 
-    <script>
-        var element = document.getElementById('element-to-print');
-        var bouton = document.getElementById("bouton");
-        var bouton2 = document.getElementById("bouton2");
-        var bouton3 = document.getElementById("bouton3");
-        
+    <h2>Save data</h2>
+<form id="userForm">
+    <label for="nom">Last name :</label>
+    <input type="text" id="nom" name="nom" required>
+    <br>
+    <label for="prenom">First name :</label>
+    <input type="text" id="prenom" name="prenom" required>
+    <br>
+    <label for="dateNaissance">Date of birth :</label>
+    <input type="date" id="dateNaissance" name="dateNaissance" required>
+    <br>
+    <label for="pathway">Choose a pathway:</label>
+    <select name="pathway" id="pathway-selected">
+        <option value="">--Please choose a pathway--</option>
+    </select>
+    <br>
+    <label for="certificate">Choose the certificate type:</label>
+    <select name="certificate" id="certificate-selected">
+        <option value="attendance">Certificate of attendance</option>
+        <option value="completion">Certificate of completion</option>
+    </select>
 
-        bouton.addEventListener("click", (event) => {
-            var opt = {
-                filename:     'myfile.pdf',
-                html2canvas:  { scale: 1, scrollY: 0 },
-                jsPDF:        { unit: 'cm', format: 'a4', orientation: 'landscape' }
-                };
-                html2pdf()
-                .from(element)
-                .set(opt)
-                .save();
-        });
+    <button type="button" id="sauvegarderDonnees">Save</button>
+</form>
 
-        bouton2.addEventListener("click", (e) =>{
-            window.location.href="html/page2.html"
-        });
-        var newCookie = "name=oeschger; SameSite=None; Secure";
-        bouton3.addEventListener("click", (ev) =>{
-            document.cookie = newCookie;
-        });
-        
+<button id="approbationpage">certificate request page</button>
 
-        
-    </script>
+<main-footer></main-footer>
+<link rel="stylesheet" href="css/bootstrap.min.css" />
+<script src="js/header.js"></script>
+<script src="js/footer.js"></script>
 
 </body>
 </html>
