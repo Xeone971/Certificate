@@ -1,0 +1,94 @@
+<!--
+File: index.html
+Contract: EU contract 2022-FR01-KA220-HED-000023509
+Project: FitNESS 2 ERASMUS+
+File Created: Thursday, 11th April 2024
+Authors: Steward OUADI (AgroParisTech),  Olivier VITRAC (INRAE), Lucca COLLAS
+-----
+Last Modified: Tuesday, 4th June 2024
+Modified By: Lucca COLLAS
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="./node_modules/es6-promise/dist/es6-promise.auto.min.js"></script>
+    <script src="./node_modules/jspdf/dist/jspdf.min.js"></script>
+    <script src="./node_modules/html2canvas/dist/html2canvas.min.js"></script>
+    <script src="./node_modules/html2pdf.js/dist/html2pdf.js"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/4.2.8/es6-promise.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.8.0/html2pdf.bundle.min.js"></script> -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="../js/index.js" type="module"></script>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/fitness.css">
+    <link rel="stylesheet" href="../css/font-awesome-4-7-0.min.css">
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+</head>
+<body>
+    <main-header></main-header>
+
+    <div id="element-to-print">
+        <!-- <img src="./OF ATTENDANCE.png" alt="tqt"> -->
+    </div>
+
+    <div class="container">
+        <!-- <p>test</p> -->
+    </div>
+    
+    <!-- <button id="bouton">Save PDF</button> -->
+    <!-- <button id="bouton2">Switch page</button> -->
+    <!-- <button id="bouton3">Sample data</button> -->
+    <button id="bouton4">export</button>
+    <!-- <button id="bouton5">import</button> -->
+    <!-- <button id="bouton6">Generate view certificate</button> -->
+    <!-- <input type="file" id="fileInput"> -->
+    <button style="display:block;width:120px; height:30px;" onclick="document.getElementById('fileInput').click()">Import data</button>
+    <input type='file' id="fileInput" style="display:none">
+    
+
+    <script>
+        // var element = document.getElementById('element-to-print');
+        // var bouton = document.getElementById("bouton");
+        // var bouton2 = document.getElementById("bouton2");
+        // var bouton3 = document.getElementById("bouton3");
+        
+
+        // bouton.addEventListener("click", (event) => {
+        //     var opt = {
+        //         filename:     'myfile.pdf',
+        //         html2canvas:  { scale: 1, scrollY: 0 },
+        //         jsPDF:        { unit: 'cm', format: 'a4', orientation: 'landscape' }
+        //         };
+        //         html2pdf()
+        //         .from(element)
+        //         .set(opt)
+        //         .save();
+        // });
+
+        // bouton2.addEventListener("click", (e) =>{
+        //     window.location.href="html/approbation.html"
+        // });
+        // var newCookie = "name=oeschger; SameSite=None; Secure";
+        // bouton3.addEventListener("click", (ev) =>{
+        //     document.cookie = newCookie;
+        // });
+        
+
+        
+    </script>
+    <main-footer></main-footer>
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <script src="../js/header.js"></script>
+    <script src="../js/footer.js"></script>
+</body>
+</html>
