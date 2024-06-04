@@ -5,7 +5,7 @@
  * File Created: Thursday, 11th April 2024
  * Authors: Steward OUADI (AgroParisTech),  Olivier VITRAC (INRAE), Lucca COLLAS
  * -----
- * Last Modified: Friday, 24th May 2024
+ * Last Modified: Tuesday, 4th June 2024
  * Modified By: Lucca COLLAS
  */
 
@@ -65,7 +65,8 @@ function showCookies() {
         nom: decryptData(cookies['nom']),
         prenom: decryptData(cookies['prenom']),
         dateNaissance: decryptData(cookies['dateNaissance']),
-        pathway: decryptData(cookies['pathway'])
+        pathway: decryptData(cookies['pathway']),
+        certificateSelect: decryptData(cookies['certificateSelect'])
     };
 
     output.textContent = `> ${JSON.stringify(decryptedCookies)}`;
@@ -106,5 +107,5 @@ function findKeyByValue(valueToFind) {
 var boutonapprobationpage = document.getElementById("approbationpage");
 
 boutonapprobationpage.addEventListener("click", (e) => {
-    window.location.href = "approbation.html"
+    window.location.href = "html/approbation.html"
 });

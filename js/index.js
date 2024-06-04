@@ -5,7 +5,7 @@
  * File Created: Thursday, 11th April 2024
  * Authors: Steward OUADI (AgroParisTech),  Olivier VITRAC (INRAE), Lucca COLLAS
  * -----
- * Last Modified: Wednesday, 22nd May 2024
+ * Last Modified: Tuesday, 4th June 2024
  * Modified By: Lucca COLLAS
  */
 
@@ -179,8 +179,8 @@ function controlevuepdf() {
   document.getElementById('element-to-print').insertAdjacentHTML("afterbegin", tqt);
 }
 
-var bouton6 = document.getElementById("bouton6");
-bouton6.addEventListener('click', function () {
-  element.classList.toggle("oui");
-  controlevuepdf();
-});
+// var bouton6 = document.getElementById("bouton6");
+// bouton6.addEventListener('click', function () {
+//   element.classList.toggle("oui");
+//   controlevuepdf();
+// });
