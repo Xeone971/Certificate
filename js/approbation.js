@@ -79,6 +79,7 @@ function verifierCookies(nomsCookiesReference) {
         counter += 1;
         sum += Number(cookies[nomCookie]);
         if (!(nomCookie in cookies)) {
+            alert("You haven't completed all your quizzes");
             return false;
         }
     }
