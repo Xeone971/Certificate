@@ -109,6 +109,7 @@ function importJSONToCookies(jsonData) {
     }
 
     console.log("Cookies créés avec succès !");
+    alert("Your data has been imported");
   } catch (error) {
     console.error("Erreur lors de l'importation du JSON vers les cookies:", error);
   }
