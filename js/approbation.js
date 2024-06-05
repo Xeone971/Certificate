@@ -42,19 +42,52 @@ appro.addEventListener('click', function () {
     }
 });
 
+// function verifierCookies(nomsCookiesReference) {
+//     // Extraire les cookies de document.cookie
+//     const cookies = document.cookie.split(';').reduce((cookiesObj, cookie) => {
+//         const [name, value] = cookie.trim().split('=');
+//         cookiesObj[name] = decryptData(value);
+//         return cookiesObj;
+//     }, {});
+
+//     // Vérifier les valeurs des cookies de référence
+//     for (const nomCookie of nomsCookiesReference) {
+//         if (!(nomCookie in cookies) || cookies[nomCookie] <= 5) {
+//             return false;
+//         }
+//     }
+//     return true;
+// }
+
+function actionSiMoyenneBasse() {
+    // Logique à exécuter si la moyenne est inférieure à 8
+    
+}
+
 function verifierCookies(nomsCookiesReference) {
+    var counter = 0;
+    var average = 0;
+    var  sum = 0;
     // Extraire les cookies de document.cookie
     const cookies = document.cookie.split(';').reduce((cookiesObj, cookie) => {
         const [name, value] = cookie.trim().split('=');
         cookiesObj[name] = decryptData(value);
         return cookiesObj;
     }, {});
-
     // Vérifier les valeurs des cookies de référence
     for (const nomCookie of nomsCookiesReference) {
-        if (!(nomCookie in cookies) || cookies[nomCookie] <= 5) {
+        counter += 1;
+        sum += Number(cookies[nomCookie]);
+        if (!(nomCookie in cookies)) {
             return false;
         }
+    }
+    average = sum / counter;
+    // Vérifier si la moyenne est inférieure à 8
+    if (average < 8) {
+        actionSiMoyenneBasse();
+        alert('The average of your grades is less than 8, you do not meet the conditions to obtain this certificate!');
+        return false;
     }
     return true;
 }
@@ -159,7 +192,7 @@ var give = document.getElementById("creaCookieQcm");
 give.addEventListener("click", (e) => {
     // if (nomCookie && data[nomCookie]) {
     const valuesArray = data[nomCookie];
-    const encryptedValue = encryptData('8');
+    const encryptedValue = encryptData('7');
     let newdata = [];
     for (let key in data[nomCookie]) {
         const length = valuesArray[key].length; // Accéder à la longueur du tableau à la clé spécifique
