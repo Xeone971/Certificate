@@ -5,11 +5,11 @@
  * File Created: Thursday, 11th April 2024
  * Authors: Steward OUADI (AgroParisTech),  Olivier VITRAC (INRAE), Lucca COLLAS
  * -----
- * Last Modified: Friday, 24th May 2024
+ * Last Modified: Wednesday, 5th June 2024
  * Modified By: Lucca COLLAS
  */
 
-import * as data from './tab.js';
+import * as data from './database.js';
 import {
     encryptData,
     decryptData

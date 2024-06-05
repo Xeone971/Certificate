@@ -1,186 +1,111 @@
 /*
- * File: index.js
+ * File: page2.js
  * Contract: EU contract 2022-FR01-KA220-HED-000023509
  * Project: FitNESS 2 ERASMUS+
  * File Created: Thursday, 11th April 2024
  * Authors: Steward OUADI (AgroParisTech),  Olivier VITRAC (INRAE), Lucca COLLAS
  * -----
- * Last Modified: Tuesday, 4th June 2024
+ * Last Modified: Wednesday, 5th June 2024
  * Modified By: Lucca COLLAS
  */
 
-// import * as html2pdf from 'html2pdf.js';
-
-var element = document.getElementById('element-to-print');
-
-var bouton = document.getElementById("bouton");
-
-
-
-// bouton.addEventListener("click", (event) => {
-//     html2pdf()
-//     .from(element)
-//     .save();
-// });
-
-var bouton4 = document.getElementById("bouton4");
-var bouton5 = document.getElementById("bouton5");
-
-
-// Fonction pour exporter les données des cookies dans un tableau JSON
-function exportCookiesToJSON() {
-  // Obtenir tous les cookies du navigateur
-  var cookies = document.cookie.split("; ");
-
-  // Tableau JSON pour stocker les données des cookies
-  var cookieData = {};
-
-  // Parcourir tous les cookies
-  cookies.forEach(function (cookie) {
-    // Diviser le cookie en nom et valeur
-    var parts = cookie.split("=");
-    var cookieName = parts[0];
-    var cookieValue = parts[1];
-
-    // Mettre à jour le tableau JSON avec les données du cookie
-    cookieData[cookieName] = cookieValue;
-  });
-
-  // Vous pouvez ajouter ici un tableau JSON par défaut
-  var defaultData = {
-    "name": "valeur_par_defaut1",
-
-    // Ajoutez d'autres clés et valeurs par défaut selon vos besoins
-  };
-
-  // Fusionner les données par défaut avec les données des cookies
-  var mergedData = Object.assign({}, defaultData, cookieData);
-
-  // Convertir le tableau JSON en chaîne JSON
-  var jsonData = JSON.stringify(mergedData);
-
-  // Afficher la chaîne JSON dans la console (vous pouvez faire autre chose avec ces données)
-  console.log(jsonData);
-
-  // Vous pouvez également renvoyer les données si vous avez besoin de les utiliser dans votre code
-  //return jsonData;
-  // Créer un objet Blob avec le contenu JSON
-  var blob = new Blob([jsonData], {
-    type: "application/json"
-  });
-
-  // Créer un objet URL pour le Blob
-  var url = URL.createObjectURL(blob);
-
-  // Créer un élément <a> pour le téléchargement
-  var a = document.createElement("a");
-  a.href = url;
-  a.download = "donnees_cookies.json"; // Nom du fichier de téléchargement
-
-  // Ajouter l'élément <a> à la page
-  document.body.appendChild(a);
-
-  // Simuler un clic sur l'élément <a> pour déclencher le téléchargement
-  a.click();
-
-  // Retirer l'élément <a> de la page
-  document.body.removeChild(a);
-};
-
-// Appeler la fonction pour exporter les données des cookies
+import * as data from './database.js';
+import {
+    encryptData,
+    decryptData
+} from './encrypt.js';
 
 
 
+//var donneLocal = document.getElementById("sauvegarderDonneeslocal");
+var donne = document.getElementById("sauvegarderDonnees");
+var clearCookie = document.getElementById("clearOutputCookies");
+var showCookie = document.getElementById("showCookies");
 
-// Fonction pour importer les données depuis un tableau JSON et créer des cookies
-function importJSONToCookies(jsonData) {
-  try {
-    // Convertir la chaîne JSON en objet JavaScript
-    var dataObject = JSON.parse(jsonData);
+// donneLocal.addEventListener('click', sauvegarderDonneeslocal);
+donne.addEventListener('click', sauvegarderDonnees);
+clearCookie.addEventListener('click', clearOutputCookies);
+showCookie.addEventListener('click', showCookies);
 
-    // Parcourir toutes les clés de l'objet
-    for (var key in dataObject) {
-      // Obtenir la valeur associée à la clé
-      var value = dataObject[key];
+// function showCookies() {
+//     const output = document.getElementById("cookies");
+//     output.textContent = `> ${document.cookie}`;
+//     }
 
-      // Créer un cookie avec la clé et la valeur
-      document.cookie = key + "=" + value + "; path=/";
-    }
+function clearOutputCookies() {
+    const output = document.getElementById("cookies");
+    output.textContent = "";
+}
 
-    console.log("Cookies créés avec succès !");
-  } catch (error) {
-    console.error("Erreur lors de l'importation du JSON vers les cookies:", error);
-  }
-};
+function sauvegarderDonnees() {
+    var nom = encryptData(document.getElementById('nom').value);
+    var prenom = encryptData(document.getElementById('prenom').value);
+    var dateNaissance = encryptData(document.getElementById('dateNaissance').value);
+    var pathwaySelect = document.getElementById("pathway-selected");
+    var selectedPathway = pathwaySelect.options[pathwaySelect.selectedIndex].value;
+    var certificateSelect = document.getElementById("certificate-selected");
+    var selectedCertificate = encryptData(certificateSelect.options[certificateSelect.selectedIndex].value);
+    // Enregistrez les données cryptées dans des cookies
+    document.cookie = 'nom=' + nom + '; path=/';
+    document.cookie = 'prenom=' + prenom + '; path=/';
+    document.cookie = 'dateNaissance=' + dateNaissance + '; path=/';
+    document.cookie = 'pathway=' + encryptData(findKeyByValue(selectedPathway)) + '; path=/';
+    document.cookie = 'certificateSelect=' + selectedCertificate + '; path=/';
+    alert('Données sauvegardées avec succès!');
+}
 
-// Exemple d'utilisation avec une chaîne JSON (remplacez avec votre propre JSON)
-var jsonString = '{"nom_de_la_cle1": "nouvelle_valeur1", "nom_de_la_cle2": "nouvelle_valeur2"}';
+function showCookies() {
+    const output = document.getElementById("cookies");
+    const cookies = document.cookie.split(';').map(cookie => cookie.split('=')).reduce((acc, [key, value]) => ({
+        ...acc,
+        [key.trim()]: value
+    }), {});
 
-// Appeler la fonction pour importer les données depuis le JSON vers les cookies
-
-
-bouton4.addEventListener("click", (ok) => {
-  exportCookiesToJSON();
-});
-// var newCookie = "name=oeschger; SameSite=None; Secure";
-// bouton5.addEventListener("click", (pasok) =>{
-//     importJSONToCookies(jsonData);
-// });
-
-function importJSONFromInputFile(inputFile) {
-  var file = inputFile.files[0];
-  if (file) {
-    var reader = new FileReader();
-
-    reader.onload = function (e) {
-      var jsonData = e.target.result;
-
-      // Appeler la fonction pour importer les données depuis le JSON vers les cookies
-      importJSONToCookies(jsonData);
+    const decryptedCookies = {
+        nom: decryptData(cookies['nom']),
+        prenom: decryptData(cookies['prenom']),
+        dateNaissance: decryptData(cookies['dateNaissance']),
+        pathway: decryptData(cookies['pathway']),
+        certificateSelect: decryptData(cookies['certificateSelect'])
     };
 
-    // Lire le contenu du fichier en tant que texte
-    reader.readAsText(file);
-  }
-};
+    output.textContent = `> ${JSON.stringify(decryptedCookies)}`;
+}
 
-var input = document.getElementById("fileInput");
-document.getElementById('fileInput').addEventListener('change', function () {
-  importJSONFromInputFile(this);
+
+
+const pathways = document.getElementById("pathway-selected");
+
+
+let newdata = [];
+for (let key in data.pathTrad) {
+    console.log(key); // Affiche la clé (par exemple, 'path1', 'path2', etc.)
+    console.log(data.pathTrad[key]); // Affiche le tableau associé à la clé
+    newdata.push(data.pathTrad[key][0]);
+
+}
+console.log(newdata);
+newdata.forEach((pathway) => {
+    const option = document.createElement("option");
+    option.value = pathway.toLowerCase();
+    option.text = pathway;
+    pathways.appendChild(option); // Ajoutez l'option à petSelect, pas à pathway
 });
 
 
-function vuepdf(data) {
-  return `
-        <p>${data.nom}  ${data.prenom}</p>
-        <img src="./media/OF ATTENDANCE.png" alt="tqt">
-        
-    `
+function findKeyByValue(valueToFind) {
+    console.log(valueToFind);
+    for (let key in data.pathTrad) {
+        if (data.pathTrad[key][0].toLowerCase() === valueToFind) {
+            return key; // Retourne la clé si la valeur est trouvée
+        }
+    }
+    return null; // Retourne null si la valeur n'est pas trouvée
 }
 
-function controlevuepdf() {
-  var cookies = document.cookie.split("; ");
 
-  // Tableau JSON pour stocker les données des cookies
-  var cookieData = {};
+var boutonapprobationpage = document.getElementById("approbationpage");
 
-  // Parcourir tous les cookies
-  cookies.forEach(function (cookie) {
-    // Diviser le cookie en nom et valeur
-    var parts = cookie.split("=");
-    var cookieName = parts[0];
-    var cookieValue = parts[1];
-
-    // Mettre à jour le tableau JSON avec les données du cookie
-    cookieData[cookieName] = cookieValue;
-  });
-
-  const tqt = vuepdf(cookieData);
-  document.getElementById('element-to-print').insertAdjacentHTML("afterbegin", tqt);
-}
-
-// var bouton6 = document.getElementById("bouton6");
-// bouton6.addEventListener('click', function () {
-//   element.classList.toggle("oui");
-//   controlevuepdf();
-// });
+boutonapprobationpage.addEventListener("click", (e) => {
+    window.location.href = "html/approbation.html"
+});
