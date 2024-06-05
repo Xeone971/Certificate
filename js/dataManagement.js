@@ -1,13 +1,14 @@
 /*
- * File: index.js
+ * File: dataManagement.js
  * Contract: EU contract 2022-FR01-KA220-HED-000023509
  * Project: FitNESS 2 ERASMUS+
  * File Created: Thursday, 11th April 2024
  * Authors: Steward OUADI (AgroParisTech),  Olivier VITRAC (INRAE), Lucca COLLAS
  * -----
- * Last Modified: Tuesday, 4th June 2024
+ * Last Modified: Wednesday, 5th June 2024
  * Modified By: Lucca COLLAS
  */
+
 
 // import * as html2pdf from 'html2pdf.js';
 

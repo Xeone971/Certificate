@@ -1,5 +1,5 @@
 /*
- * File: tab.js
+ * File: database.js
  * Contract: EU contract 2022-FR01-KA220-HED-000023509
  * Project: FitNESS 2 ERASMUS+
  * File Created: Thursday, 11th April 2024

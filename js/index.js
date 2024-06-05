@@ -1,5 +1,5 @@
 /*
- * File: page2.js
+ * File: index.js
  * Contract: EU contract 2022-FR01-KA220-HED-000023509
  * Project: FitNESS 2 ERASMUS+
  * File Created: Thursday, 11th April 2024
@@ -8,6 +8,7 @@
  * Last Modified: Wednesday, 5th June 2024
  * Modified By: Lucca COLLAS
  */
+
 
 import * as data from './database.js';
 import {
