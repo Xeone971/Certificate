@@ -16,7 +16,7 @@ class Header extends HTMLElement {
           <a href="javascript:void(0);" class="icon" onclick="topNavOnClick()">
               <i class="fa fa-bars"></i>
           </a>
-          <a href="fitness2/certificate/" >Form</a>
+          <a href="fitness2/certificate/index.html" >Form</a>
           <a href="javascript:void(0);" class="icon" onclick="topNavOnClick()">
               <i class="fa fa-bars"></i>
           </a>
@@ -24,7 +24,7 @@ class Header extends HTMLElement {
           <a href="javascript:void(0);" class="icon" onclick="topNavOnClick()">
               <i class="fa fa-bars"></i>
           </a>
-          <a href="/html/dataManagement.html" >Data</a>
+          <a href="/fitness2/certificate/html/dataManagement.html" >Data</a>
           <a href="javascript:void(0);" class="icon" onclick="topNavOnClick()">
               <i class="fa fa-bars"></i>
           </a>
