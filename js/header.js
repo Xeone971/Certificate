@@ -5,7 +5,7 @@
  * File Created: Friday, 24th May 2024
  * Authors: Steward OUADI (AgroParisTech),  Olivier VITRAC (INRAE), Lucca COLLAS
  * -----
- * Last Modified: Tuesday, 4th June 2024
+ * Last Modified: Tuesday, 11th June 2024
  * Modified By: Lucca COLLAS
  */
 class Header extends HTMLElement {
@@ -16,11 +16,11 @@ class Header extends HTMLElement {
           <a href="javascript:void(0);" class="icon" onclick="topNavOnClick()">
               <i class="fa fa-bars"></i>
           </a>
-          <a href="/" >Form</a>
+          <a href="fitness2/certificate/" >Form</a>
           <a href="javascript:void(0);" class="icon" onclick="topNavOnClick()">
               <i class="fa fa-bars"></i>
           </a>
-          <a href="/html/approbation.html" >Certificate</a>
+          <a href="/fitness2/certificate/html/approbation.html" >Certificate</a>
           <a href="javascript:void(0);" class="icon" onclick="topNavOnClick()">
               <i class="fa fa-bars"></i>
           </a>
