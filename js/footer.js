@@ -15,7 +15,7 @@ class Footer extends HTMLElement {
           <div class="container">
           <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top">
               <div class="col mb-3">
-                  <img src="../img/Fitness2_logo.PNG" class="rounded mx-auto d-block" alt="" width="90%" height="auto">
+                  <img src="/img/Fitness2_logo.PNG" class="rounded mx-auto d-block" alt="" width="90%" height="auto">
                   <img src="/img/Erasmus-Logo-sans-fond-1-uai-1032x212.png" class="rounded mx-auto d-block" alt=""
                       width="90%" height="auto">
                   <p class="nav-link p-0 text-muted"> FITNESS 2 is funded by the European Union's ERASMUS programme
