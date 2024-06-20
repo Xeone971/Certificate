@@ -5,7 +5,7 @@
  * File Created: Thursday, 11th April 2024
  * Authors: Steward OUADI (AgroParisTech),  Olivier VITRAC (INRAE), Lucca COLLAS
  * -----
- * Last Modified: Wednesday, 5th June 2024
+ * Last Modified: Thursday, 20th June 2024
  * Modified By: Lucca COLLAS
  */
 
@@ -193,7 +193,7 @@ var give = document.getElementById("creaCookieQcm");
 give.addEventListener("click", (e) => {
     // if (nomCookie && data[nomCookie]) {
     const valuesArray = data[nomCookie];
-    const encryptedValue = encryptData('7');
+    const encryptedValue = encryptData('8');
     let newdata = [];
     for (let key in data[nomCookie]) {
         const length = valuesArray[key].length; // Accéder à la longueur du tableau à la clé spécifique
@@ -239,4 +239,166 @@ function controlevuepdf() {
 
     const tqt = vuepdf(cookieData);
     document.body.insertAdjacentHTML("afterbegin", tqt);
+}
+
+
+
+function masterCertificate(){
+    var testbouton = document.getElementById("testcertif");
+testbouton.addEventListener('click', function () {
+    // Récupérer la valeur du cookie 'pathway'
+    const pathwayValue = getCookie('pathway');
+
+    // Vérifier si le cookie 'pathway' existe et correspond à une clé dans l'objet data
+    if (pathwayValue && data[pathwayValue]) {
+        const nomsCookiesReference = Object.values(data[pathwayValue]).flat();
+        // Utilisez nomsCookiesReference comme vous le souhaitez
+        console.log(nomsCookiesReference);
+        if (verifierCookies(nomsCookiesReference)) {
+            // Si la vérification est réussie (True)
+            fonctionSiTruetest();
+        } else {
+            // Si la vérification échoue (False)
+            fonctionSiFalsetest();
+        }
+    } else {
+        console.error("Le chemin (path) spécifié dans le cookie 'pathway' n'est pas valide ou n'existe pas dans l'objet data.");
+    }
+});
+
+function fonctionSiTruetest() {
+    // Code à exécuter si la vérification est True
+    console.log("Tous les cookies sont valides !");
+    var firstname = getCookie("nom");
+    var lastname = getCookie("prenom");
+    var date = getFormattedDate();
+    var certificatetype = getCookie("certificateSelect");
+    var pathway = getCookie("pathway");
+    var pathwayname = data.pathTrad[pathway];
+    // Autres actions...
+    //document.body.insertAdjacentHTML('afterbegin', '<div id="myID1"><p>Here\'s your certificate!</p></div>');
+    controlevuepdftest();
+    var element = document.getElementById('element-to-print');
+    var bouton = document.getElementById("bouton");
+        var opt = {
+            filename: 'myfile.pdf',
+            html2canvas: {
+                scale: 1,
+                scrollY: 0
+            },
+            jsPDF: {
+                unit: 'cm',
+                format: 'a4',
+                orientation: 'landscape'
+            }
+        };
+        html2pdf()
+            .from(element)
+            .set(opt)
+            // .save();
+            .toPdf() // Convertir le contenu en PDF
+            .get('pdf') // Obtenir l'objet jsPDF
+            .then(function (pdf) {
+                // Positionner et ajouter un lien cliquable
+                // Les coordonnées x et y définissent la position de départ du texte
+                // pdf.textWithLink('Cliquez ici pour visiter Google', 5, 5, { url: 'https://www.google.com' });
+                // Sauvegarder le document
+                pdf.save(`${firstname}_${lastname}_certificate-of-${certificatetype}_${pathwayname}_${date}`);
+            });
+            element.remove();
+    
+}
+
+function vuepdftest(data) {
+    return `
+    <div id="element-to-print" class="oui">
+        <p>${data.nom}  ${data.prenom}</p>
+        <img src="../media/OF ATTENDANCE.png" alt="tqt">
+    </div>
+    `
+}
+
+function controlevuepdftest() {
+    var cookies = document.cookie.split("; ");
+
+    // Tableau JSON pour stocker les données des cookies
+    var cookieData = {};
+
+    // Parcourir tous les cookies
+    cookies.forEach(function (cookie) {
+        // Diviser le cookie en nom et valeur
+        var parts = cookie.split("=");
+        var cookieName = parts[0];
+        var cookieValue = parts[1];
+
+        // Mettre à jour le tableau JSON avec les données du cookie
+        cookieData[cookieName] = decryptData(cookieValue);
+    });
+
+    const tqt = vuepdftest(cookieData);
+    document.body.insertAdjacentHTML("afterbegin", tqt);
+}
+function fonctionSiFalsetest() {
+    // Code à exécuter si la vérification est False
+    console.log("Certains cookies ne sont pas valides !");
+    // Autres actions...
+    document.body.insertAdjacentHTML('afterbegin', '<div id="myID2">You do not meet the criteria for this certificate</div>');
+}
+
+function actionSiMoyenneBasse() {
+    // Logique à exécuter si la moyenne est inférieure à 8
+    
+}
+
+function verifierCookies(nomsCookiesReference) {
+    var counter = 0;
+    var average = 0;
+    var  sum = 0;
+    // Extraire les cookies de document.cookie
+    const cookies = document.cookie.split(';').reduce((cookiesObj, cookie) => {
+        const [name, value] = cookie.trim().split('=');
+        cookiesObj[name] = decryptData(value);
+        return cookiesObj;
+    }, {});
+    // Vérifier les valeurs des cookies de référence
+    for (const nomCookie of nomsCookiesReference) {
+        counter += 1;
+        sum += Number(cookies[nomCookie]);
+        if (!(nomCookie in cookies)) {
+            alert("You haven't completed all your quizzes");
+            return false;
+        }
+    }
+    average = sum / counter;
+    // Vérifier si la moyenne est inférieure à 8
+    if (average < 8) {
+        actionSiMoyenneBasse();
+        alert('The average of your grades is less than 8, you do not meet the conditions to obtain this certificate!');
+        return false;
+    }
+    return true;
+}
+
+function getCookie(name) {
+    // Sépare la chaîne des cookies en un tableau de cookies individuels
+    let cookieArray = document.cookie.split('; ');
+
+    // Parcourir le tableau de cookies
+    for (let cookie of cookieArray) {
+        // Séparer le nom et la valeur du cookie actuel
+        let cookieParts = cookie.split('=');
+        let cookieName = cookieParts[0];
+        let cookieValue = cookieParts[1];
+
+        // Vérifier si le nom du cookie correspond à celui recherché
+        if (cookieName === name) {
+            // Retourner la valeur du cookie
+            const decryptedValue = decryptData(decodeURIComponent(cookieValue));
+            return decryptedValue;
+        }
+    }
+
+    // Retourner null si le cookie n'a pas été trouvé
+    return null;
+}
 }
