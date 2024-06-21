@@ -5,7 +5,7 @@
  * File Created: Thursday, 11th April 2024
  * Authors: Steward OUADI (AgroParisTech),  Olivier VITRAC (INRAE), Lucca COLLAS
  * -----
- * Last Modified: Thursday, 20th June 2024
+ * Last Modified: Friday, 21st June 2024
  * Modified By: Lucca COLLAS
  */
 
@@ -191,7 +191,7 @@ function vuepdftest(data) {
     return `
     <div id="element-to-print" class="oui">
         <p>${data.nom}  ${data.prenom}</p>
-        <img src="../media/OF ATTENDANCE.png" alt="tqt">
+        <img src="../img/OF ATTENDANCE.png" alt="tqt">
     </div>
     `
 }
