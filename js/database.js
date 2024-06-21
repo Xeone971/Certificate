@@ -5,7 +5,7 @@
  * File Created: Thursday, 11th April 2024
  * Authors: Steward OUADI (AgroParisTech),  Olivier VITRAC (INRAE), Lucca COLLAS
  * -----
- * Last Modified: Wednesday, 5th June 2024
+ * Last Modified: Friday, 21st June 2024
  * Modified By: Lucca COLLAS
  */
 
@@ -29,6 +29,18 @@ let path1 = {
     FPH: ['FP-H-1', 'FP-H-2', 'FP-H-5', 'FP-H-8'],
     FPI: ['FP-I-3']
 };
+
+let path1Quiz = {
+    FPA: ['FP-A-1'],
+    FPB: ['FP-B-1', 'FP-B-4', 'FP-B-5', 'FP-B-6', 'FP-B-7'],
+    FPC: ['FP-C-1', 'FP-C-2', 'FP-C-3', 'FP-C-4', 'FP-C-5', 'FP-C-10'],
+    FPD: ['FP-D-1', 'FP-D-2', 'FP-D-5', 'FP-D-6', 'FP-D-7', 'FP-D-8', 'FP-D-9'],
+    FPE: ['FP-E-1', 'FP-E-2', 'FP-E-3', 'FP-E-4', 'FP-E-5', 'FP-E-6', 'FP-E-10', 'FP-E-11'],
+    FPF: ['FP-F-1', 'FP-F-5', 'FP-F-6'],
+    FPH: ['FP-H-1', 'FP-H-8'],
+    FPI: ['FP-I-3']
+};
+
 let path1Trad = {
     FPA: ['Panorama of Food packaging'],
     FPB: ['Food Packaging Materials'],
@@ -142,6 +154,7 @@ let path7Trad = {
 export {
     pathTrad,
     path1,
+    path1Quiz,
     path1Trad,
     path2,
     path2Trad,
